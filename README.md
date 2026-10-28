@@ -38,7 +38,7 @@ Then open http://localhost:8000.
 - **Booking link:** change `BOOKING_URL` at the top of `public/script.js`. The `href` on the two booking buttons in `index.html` is a fallback for visitors without JavaScript, so update it too.
 - **Brand colors:** the CSS variables in `:root` at the top of `public/styles.css`.
 - **Switching to Gotham:** put the licensed `.woff2` files in `public/fonts/`, add `@font-face` rules for them at the top of `styles.css`, and move `"Gotham"` to the front of `--font`. Update the two `<link rel="preload">` tags in `index.html` to point at the Gotham files.
-- **Logos and icons:** replace the originals in `brand/` and run `python3 scripts/optimize_images.py` (needs `pip install Pillow`). `public/favicon.svg` is a straight copy of `brand/bolt-navy.svg`; copy it over again if the mark changes.
+- **Logos and icons:** replace the originals in `brand/` and run `python3 scripts/optimize_images.py` (needs `pip install Pillow`). `public/favicon.svg` uses the paths from `brand/bolt-navy.svg` and switches to the white colorway (`bolt-white.svg`) when the browser is in dark mode; update its paths if the mark changes.
 
 ## Site URL
 
