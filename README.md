@@ -9,7 +9,7 @@ public/                 Everything that gets deployed
   script.js             Booking link constant, scroll fade-in
   fonts/                Self-hosted Montserrat (300 to 800), SIL Open Font License
   assets/               Web-sized logo and Open Graph share image
-  favicon.ico, favicon-32.png, apple-touch-icon.png, icon-512.png
+  favicon.svg, favicon.ico, favicon-32.png, apple-touch-icon.png, icon-512.png
 brand/                  Originals: brand guidelines PDF, full-size logos, the approved
                         single-file design (approved-index.html). Not deployed.
 scripts/optimize_images.py   Regenerates public/assets and the favicons from brand/
@@ -38,7 +38,7 @@ Then open http://localhost:8000.
 - **Booking link:** change `BOOKING_URL` at the top of `public/script.js`. The `href` on the two booking buttons in `index.html` is a fallback for visitors without JavaScript, so update it too.
 - **Brand colors:** the CSS variables in `:root` at the top of `public/styles.css`.
 - **Switching to Gotham:** put the licensed `.woff2` files in `public/fonts/`, add `@font-face` rules for them at the top of `styles.css`, and move `"Gotham"` to the front of `--font`. Update the two `<link rel="preload">` tags in `index.html` to point at the Gotham files.
-- **Logos and icons:** replace the originals in `brand/` and run `python3 scripts/optimize_images.py` (needs `pip install Pillow`).
+- **Logos and icons:** replace the originals in `brand/` and run `python3 scripts/optimize_images.py` (needs `pip install Pillow`). `public/favicon.svg` is a straight copy of `brand/bolt-navy.svg`; copy it over again if the mark changes.
 
 ## Before going live
 
