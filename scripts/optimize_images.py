@@ -28,15 +28,6 @@ def save_png(im, path, colors=256):
     print(f"{path.relative_to(ROOT)}  {path.stat().st_size // 1024} KB  {im.size}")
 
 
-def crop_mark(lockup):
-    """Crop the mark: everything left of the first fully transparent column."""
-    alpha = lockup.getchannel("A")
-    for x in range(1, lockup.width):
-        if alpha.crop((x, 0, x + 1, lockup.height)).getextrema()[1] == 0:
-            return lockup.crop((0, 0, x, lockup.height)).crop(alpha.crop((0, 0, x, lockup.height)).getbbox())
-    raise ValueError("no gap between mark and wordmark")
-
-
 def square(im):
     side = max(im.size)
     canvas = Image.new("RGBA", (side, side), (0, 0, 0, 0))
@@ -60,11 +51,10 @@ def main():
     dark = Image.open(SRC / "zare-logo-dark.png").convert("RGBA")
     save_png(fit_height(dark, 128), OUT / "zare-logo-dark.png")
 
-    # Favicons from the navy mark. The supplied bolt-*.png files are solid
-    # rectangles with no bolt in them, so the mark is cropped (not redrawn)
-    # from the navy lockup instead.
-    light = Image.open(SRC / "zare-logo-light.png").convert("RGBA")
-    bolt = square(crop_mark(light))
+    # Favicons from the navy bolt. public/favicon.svg is a straight copy of
+    # brand/bolt-navy.svg.
+    bolt = Image.open(SRC / "bolt-navy.png").convert("RGBA")
+    bolt = square(bolt.crop(bolt.getchannel("A").getbbox()))
     bolt.resize((48, 48), Image.LANCZOS).save(
         PUBLIC / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)]
     )
