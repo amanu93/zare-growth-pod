@@ -40,6 +40,6 @@ Then open http://localhost:8000.
 - **Switching to Gotham:** put the licensed `.woff2` files in `public/fonts/`, add `@font-face` rules for them at the top of `styles.css`, and move `"Gotham"` to the front of `--font`. Update the two `<link rel="preload">` tags in `index.html` to point at the Gotham files.
 - **Logos and icons:** replace the originals in `brand/` and run `python3 scripts/optimize_images.py` (needs `pip install Pillow`). `public/favicon.svg` is a straight copy of `brand/bolt-navy.svg`; copy it over again if the mark changes.
 
-## Before going live
+## Site URL
 
-- Set `og:image` and `twitter:image` in `index.html` to absolute URLs (for example `https://your-domain/assets/og-image.png`) and add `<meta property="og:url">` and `<link rel="canonical">` once the domain is known. Most link previews ignore relative image URLs.
+The page currently points its canonical link, `og:url`, `og:image` and `twitter:image` at `https://zare-growth-pod.vercel.app/`. When you move to a custom domain, replace that URL in the `<head>` of `public/index.html` (four places).
