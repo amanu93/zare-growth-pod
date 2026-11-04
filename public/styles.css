@@ -227,7 +227,7 @@ img { display: block; max-width: 100%; }
 .stat-row__label p { font-size: 17px; font-weight: 700; color: var(--dark-blue); }
 
 .stat { display: flex; flex-direction: column; }
-.stat__value { font-size: 40px; font-weight: 800; line-height: 1; color: var(--dark-blue); }
+.stat__value { font-size: 40px; font-weight: 800; line-height: 1; color: var(--dark-blue); white-space: nowrap; }
 .stat__caption { font-size: 13px; color: var(--muted); margin-top: 6px; }
 
 .stat-row__note { grid-column: span 2; font-size: 14px; line-height: 1.5; color: var(--muted); }
@@ -439,11 +439,15 @@ tbody tr:last-child > * { border-bottom: none; }
 
   .stat-row { padding: 24px 20px; }
   .stat-row__label { grid-column: 1 / -1; }
-  .stat__value { font-size: 34px; }
+  .stat__value { font-size: 30px; }
 
   .pod-card, .include-card { padding: 24px; }
 
   .table-wrap table { min-width: 560px; }
 
   .site-footer { padding-top: 64px; padding-bottom: 48px; }
+}
+
+@media (max-width: 400px) {
+  .stat-row { grid-template-columns: 1fr; }
 }
